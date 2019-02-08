@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="HeaderFiles"
-                   displayName="Header Files"
-                   projectFiles="true">
+    <logicalFolder name="HeaderFiles" displayName="header" projectFiles="true">
+      <itemPath>IPAddress.h</itemPath>
     </logicalFolder>
-    <logicalFolder name="ResourceFiles"
-                   displayName="Resource Files"
-                   projectFiles="true">
+    <logicalFolder name="ResourceFiles" displayName="resources" projectFiles="true">
     </logicalFolder>
-    <logicalFolder name="SourceFiles"
-                   displayName="Source Files"
-                   projectFiles="true">
+    <logicalFolder name="SourceFiles" displayName="src" projectFiles="true">
+      <itemPath>IPAddress.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,6 +32,8 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <stripSymbols>true</stripSymbols>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>/usr/include/gtkmm-3.0</pElem>
             <pElem>/usr/include/atkmm-1.6</pElem>
@@ -75,6 +73,7 @@
             <pElem>/usr/lib/cairomm-1.0/include</pElem>
             <pElem>/usr/lib/dbus-1.0/include</pElem>
           </incDir>
+          <commandLine>-export-dynamic</commandLine>
         </ccTool>
         <linkerTool>
           <stripSymbols>true</stripSymbols>
@@ -82,9 +81,13 @@
             <linkerLibLibItem>gtk-3</linkerLibLibItem>
             <linkerLibLibItem>gtkmm-3.0</linkerLibLibItem>
           </linkerLibItems>
-          <commandLine>-lgtkmm-3.0 -latkmm-1.6 -lgdkmm-3.0 -lgiomm-2.4 -lpangomm-1.4 -lglibmm-2.4 -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -latk-1.0 -lcairo-gobject -lgio-2.0 -lcairomm-1.0 -lcairo -lsigc-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0</commandLine>
+          <commandLine>-export-dynamic -lgtkmm-3.0 -latkmm-1.6 -lgdkmm-3.0 -lgiomm-2.4 -lpangomm-1.4 -lglibmm-2.4 -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -latk-1.0 -lcairo-gobject -lgio-2.0 -lcairomm-1.0 -lcairo -lsigc-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0</commandLine>
         </linkerTool>
       </compileType>
+      <item path="IPAddress.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IPAddress.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -108,6 +111,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="IPAddress.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IPAddress.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
