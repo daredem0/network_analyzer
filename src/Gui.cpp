@@ -64,7 +64,7 @@ void gui_init(Gui *gui)
         gtk_main_quit ();
     }
     
-    gtk_builder_connect_signals (gui->definitions, &gui);
+    gtk_builder_connect_signals (gui->definitions, gui);
     std::cout << gui << std::endl;
     
     gui->objects = gtk_builder_get_objects(gui->definitions);

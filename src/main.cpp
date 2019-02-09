@@ -26,8 +26,8 @@ extern "C" void btn_setIP_clicked(GtkButton *button, gpointer *data){
     //startIP = (GtkEntry *)gui->gui_get_ui_element("btn_setIP");
     //cout << "handler: " << gtk_entry_get_text(startIP) << endl;
     cout << "test b" << endl;
-    cout << (void*)gui << endl;
-    cout << (void*)*data << endl;
+    cout << gui << endl;
+    cout << data << endl;
 }
 
 int main(int argc, char *argv[]) { 
