@@ -15,7 +15,7 @@ Gui* gui = new Gui();
 
 using namespace std;
 
-extern "C" void btn_setIP_clicked(GtkButton *button, gpointer *data){
+extern "C" void btn_setIP_clicked(GtkButton *button, Gui *data){
     string test;
     cout << "test" << endl;
     //GET_UI_ELEMENT(GtkEntry, entr_startIP);
