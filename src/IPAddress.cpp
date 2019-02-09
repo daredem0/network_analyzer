@@ -13,7 +13,7 @@
  * Created on 8. Februar 2019, 18:44
  */
 
-#include "IPAddress.h"
+#include "../header/IPAddress.h"
 
 IPAddress::IPAddress(std::string first, std::string last) {
     std::string temp;

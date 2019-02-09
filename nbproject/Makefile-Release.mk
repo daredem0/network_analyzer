@@ -35,8 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/IPAddress.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/src/Gui.o \
+	${OBJECTDIR}/src/IPAddress.o \
+	${OBJECTDIR}/src/callbacks.o \
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -63,15 +65,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/na_001: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/na_001 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/IPAddress.o: IPAddress.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/Gui.o: src/Gui.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IPAddress.o IPAddress.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Gui.o src/Gui.cpp
 
-${OBJECTDIR}/main.o: main.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/IPAddress.o: src/IPAddress.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/IPAddress.o src/IPAddress.cpp
+
+${OBJECTDIR}/src/callbacks.o: src/callbacks.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/callbacks.o src/callbacks.cpp
+
+${OBJECTDIR}/src/main.o: src/main.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:

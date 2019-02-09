@@ -35,16 +35,18 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/IPAddress.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/src/Gui.o \
+	${OBJECTDIR}/src/IPAddress.o \
+	${OBJECTDIR}/src/callbacks.o \
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-export-dynamic
-CXXFLAGS=-export-dynamic
+CCFLAGS=-export-dynamic -g
+CXXFLAGS=-export-dynamic -g
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -63,15 +65,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/na_001: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/na_001 ${OBJECTFILES} ${LDLIBSOPTIONS} -export-dynamic -lgtkmm-3.0 -latkmm-1.6 -lgdkmm-3.0 -lgiomm-2.4 -lpangomm-1.4 -lglibmm-2.4 -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -latk-1.0 -lcairo-gobject -lgio-2.0 -lcairomm-1.0 -lcairo -lsigc-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -s
 
-${OBJECTDIR}/IPAddress.o: IPAddress.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/Gui.o: src/Gui.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/usr/include/gtkmm-3.0 -I/usr/include/atkmm-1.6 -I/usr/include/atk-1.0 -I/usr/include/glib-2.0 -I/usr/include/glibmm-2.4 -I/usr/include/sigc++-2.0 -I/usr/include/giomm-2.4 -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/pangomm-1.4 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libdrm -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gdkmm-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/gdkmm-3.0/include -I/usr/lib/gtkmm-3.0/include -I/usr/lib/glib-2.0/include -I/usr/lib/libffi-3.2.1/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/sigc++-2.0/include -I/usr/lib/giomm-2.4/include -I/usr/lib/pangomm-1.4/include -I/usr/lib/cairomm-1.0/include -I/usr/lib/dbus-1.0/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IPAddress.o IPAddress.cpp
+	$(COMPILE.cc) -g -s -I/usr/include/gtkmm-3.0 -I/usr/include/atkmm-1.6 -I/usr/include/atk-1.0 -I/usr/include/glib-2.0 -I/usr/include/glibmm-2.4 -I/usr/include/sigc++-2.0 -I/usr/include/giomm-2.4 -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/pangomm-1.4 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libdrm -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gdkmm-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/gdkmm-3.0/include -I/usr/lib/gtkmm-3.0/include -I/usr/lib/glib-2.0/include -I/usr/lib/libffi-3.2.1/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/sigc++-2.0/include -I/usr/lib/giomm-2.4/include -I/usr/lib/pangomm-1.4/include -I/usr/lib/cairomm-1.0/include -I/usr/lib/dbus-1.0/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Gui.o src/Gui.cpp
 
-${OBJECTDIR}/main.o: main.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/IPAddress.o: src/IPAddress.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/usr/include/gtkmm-3.0 -I/usr/include/atkmm-1.6 -I/usr/include/atk-1.0 -I/usr/include/glib-2.0 -I/usr/include/glibmm-2.4 -I/usr/include/sigc++-2.0 -I/usr/include/giomm-2.4 -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/pangomm-1.4 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libdrm -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gdkmm-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/gdkmm-3.0/include -I/usr/lib/gtkmm-3.0/include -I/usr/lib/glib-2.0/include -I/usr/lib/libffi-3.2.1/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/sigc++-2.0/include -I/usr/lib/giomm-2.4/include -I/usr/lib/pangomm-1.4/include -I/usr/lib/cairomm-1.0/include -I/usr/lib/dbus-1.0/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -s -I/usr/include/gtkmm-3.0 -I/usr/include/atkmm-1.6 -I/usr/include/atk-1.0 -I/usr/include/glib-2.0 -I/usr/include/glibmm-2.4 -I/usr/include/sigc++-2.0 -I/usr/include/giomm-2.4 -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/pangomm-1.4 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libdrm -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gdkmm-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/gdkmm-3.0/include -I/usr/lib/gtkmm-3.0/include -I/usr/lib/glib-2.0/include -I/usr/lib/libffi-3.2.1/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/sigc++-2.0/include -I/usr/lib/giomm-2.4/include -I/usr/lib/pangomm-1.4/include -I/usr/lib/cairomm-1.0/include -I/usr/lib/dbus-1.0/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/IPAddress.o src/IPAddress.cpp
+
+${OBJECTDIR}/src/callbacks.o: src/callbacks.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -s -I/usr/include/gtkmm-3.0 -I/usr/include/atkmm-1.6 -I/usr/include/atk-1.0 -I/usr/include/glib-2.0 -I/usr/include/glibmm-2.4 -I/usr/include/sigc++-2.0 -I/usr/include/giomm-2.4 -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/pangomm-1.4 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libdrm -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gdkmm-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/gdkmm-3.0/include -I/usr/lib/gtkmm-3.0/include -I/usr/lib/glib-2.0/include -I/usr/lib/libffi-3.2.1/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/sigc++-2.0/include -I/usr/lib/giomm-2.4/include -I/usr/lib/pangomm-1.4/include -I/usr/lib/cairomm-1.0/include -I/usr/lib/dbus-1.0/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/callbacks.o src/callbacks.cpp
+
+${OBJECTDIR}/src/main.o: src/main.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -s -I/usr/include/gtkmm-3.0 -I/usr/include/atkmm-1.6 -I/usr/include/atk-1.0 -I/usr/include/glib-2.0 -I/usr/include/glibmm-2.4 -I/usr/include/sigc++-2.0 -I/usr/include/giomm-2.4 -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/pangomm-1.4 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libdrm -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gdkmm-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/gdkmm-3.0/include -I/usr/lib/gtkmm-3.0/include -I/usr/lib/glib-2.0/include -I/usr/lib/libffi-3.2.1/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/sigc++-2.0/include -I/usr/lib/giomm-2.4/include -I/usr/lib/pangomm-1.4/include -I/usr/lib/cairomm-1.0/include -I/usr/lib/dbus-1.0/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
