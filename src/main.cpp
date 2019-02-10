@@ -18,7 +18,6 @@ using namespace std;
 extern "C" void btn_setIP_clicked(GtkButton *button, Gui *data){
     string test;
     cout << "test" << endl;
-    //GET_UI_ELEMENT(GtkEntry, entr_startIP);
     /*string test;
     GET_UI_ELEMENT (GtkEntry, entr_startIP);*/
     cout << gtk_buildable_get_name((GtkBuildable *)button) << endl;
@@ -41,7 +40,7 @@ int main(int argc, char *argv[]) {
     //gtk_builder_connect_signals (builder, NULL);
     //g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     //g_object_unref (G_OBJECT (builder));
-    gui_init(gui);
+    gui->gui_init();
     cout << gui << endl;
     window = (GObject *) gui->gui_get_ui_element("mywindow");
     //GtkEntry *startIP;

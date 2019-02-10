@@ -33,5 +33,9 @@ IPAddress::IPAddress(const IPAddress& orig) {
 IPAddress::~IPAddress() {
 }
 
-int* getFirstAddr();
-int* getSecondAddr();
+int* IPAddress::getFirstAddr(){
+    
+}
+int* IPAddress::getSecondAddr(){
+    
+}

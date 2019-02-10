@@ -27,9 +27,9 @@ public:
     Gui(const Gui& orig);
     virtual ~Gui();
     GObject *gui_get_ui_element(const gchar *name);
+    void gui_init();
 private:
 };
-void gui_init(Gui *gui);
 
 
 

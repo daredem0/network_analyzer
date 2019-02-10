@@ -49,14 +49,14 @@ GObject *Gui::gui_get_ui_element(const gchar * name)
     return NULL;
 }   
     
-void gui_init(Gui *gui)
+void Gui::gui_init()
 {
-    std::cout << gui << std::endl;
+    std::cout << this << std::endl;
     GError *err = NULL;
     
-    gui->definitions = gtk_builder_new ();
+    this->definitions = gtk_builder_new ();
     
-    gtk_builder_add_from_file (gui->definitions, UI_DEFINITIONS_FILE, &err);
+    gtk_builder_add_from_file (this->definitions, UI_DEFINITIONS_FILE, &err);
     
     if (err != NULL) {
         g_printerr("Error while loading app definitions file: %s\n", err->message);
@@ -64,8 +64,8 @@ void gui_init(Gui *gui)
         gtk_main_quit ();
     }
     
-    gtk_builder_connect_signals (gui->definitions, gui);
-    std::cout << gui << std::endl;
+    gtk_builder_connect_signals (this->definitions, this);
+    std::cout << this << std::endl;
     
-    gui->objects = gtk_builder_get_objects(gui->definitions);
+    this->objects = gtk_builder_get_objects(this->definitions);
 }
