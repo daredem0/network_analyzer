@@ -10,12 +10,13 @@
  *
  * Created on 9. Februar 2019, 16:54
  */
-#include "Gui.h"
-#include <iostream>
-#include <string>
 
 #ifndef CALLBACKS_H
 #define CALLBACKS_H
+
+
+#include "../header/definitions.h"
+#include "../header/Data.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,6 +28,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-extern "C" void btn_setIP_clicked();
+extern "C" void btn_setIP_clicked(GtkButton *button, Gui *data);
 #endif /* CALLBACKS_H */
 

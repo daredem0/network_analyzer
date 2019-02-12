@@ -11,28 +11,31 @@
  * Created on 9. Februar 2019, 16:43
  */
 
+
 #ifndef GUI_H
 #define GUI_H
 
 #include <gtk/gtk.h>
+#include <forward_list>
+#include <iostream>
+#include <string>
+#include "../header/Data.h"
 
 #define UI_DEFINITIONS_FILE "./GUI/test_glade_002.glade"
-//#define GET_UI_ELEMENT(TYPE, ELEMENT)   TYPE *ELEMENT = (TYPE *) gui_get_ui_element(#ELEMENT);
 
 class Gui {
 public:
     GtkBuilder *definitions;
     GSList *objects;
+    Data *data;
     Gui();
     Gui(const Gui& orig);
     virtual ~Gui();
-    GObject *gui_get_ui_element(const gchar *name);
     void gui_init();
+    GObject *gui_get_ui_element(const gchar *name);
+    int setIp(std::string firstAddr, std::string lastAddr);
 private:
 };
 
-
-
-    
 #endif /* GUI_H */
 

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/Data.o \
 	${OBJECTDIR}/src/Gui.o \
 	${OBJECTDIR}/src/IPAddress.o \
 	${OBJECTDIR}/src/callbacks.o \
@@ -64,6 +65,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/na_001: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/na_001 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/src/Data.o: src/Data.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Data.o src/Data.cpp
 
 ${OBJECTDIR}/src/Gui.o: src/Gui.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

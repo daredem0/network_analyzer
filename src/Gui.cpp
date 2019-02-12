@@ -12,17 +12,16 @@
  */
 
 #include "../header/Gui.h"
-#include <forward_list>
-#include <iostream>
-#include <string>
 
 Gui::Gui() {
+    data = new Data();
 }
 
 Gui::Gui(const Gui& orig) {
 }
 
 Gui::~Gui() {
+    delete data;
 }
 
 GObject *Gui::gui_get_ui_element(const gchar * name)
@@ -51,12 +50,13 @@ GObject *Gui::gui_get_ui_element(const gchar * name)
     
 void Gui::gui_init()
 {
+    GObject *window;
     std::cout << this << std::endl;
     GError *err = NULL;
     
     this->definitions = gtk_builder_new ();
     
-    gtk_builder_add_from_file (this->definitions, UI_DEFINITIONS_FILE, &err);
+    gtk_builder_add_from_file(this->definitions, UI_DEFINITIONS_FILE, &err);
     
     if (err != NULL) {
         g_printerr("Error while loading app definitions file: %s\n", err->message);
@@ -64,8 +64,15 @@ void Gui::gui_init()
         gtk_main_quit ();
     }
     
-    gtk_builder_connect_signals (this->definitions, this);
+    gtk_builder_connect_signals(this->definitions, this);
     std::cout << this << std::endl;
     
     this->objects = gtk_builder_get_objects(this->definitions);
+    window = (GObject *) this->gui_get_ui_element("mywindow");
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+}
+
+
+int Gui::setIp(std::string firstAddr, std::string lastAddr){
+    this->data->setIP(firstAddr, lastAddr);
 }

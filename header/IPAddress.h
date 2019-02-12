@@ -15,7 +15,6 @@
 
 #ifndef IPADDRESS_H
 #define IPADDRESS_H
-
 #include <string>
 #include <iostream>
 
@@ -24,11 +23,13 @@ public:
     IPAddress(std::string first, std::string last);
     IPAddress(const IPAddress& orig);
     virtual ~IPAddress();
-    int* getFirstAddr();
-    int* getSecondAddr();
+    int* getIP();
+    std::string ipToString(int ip);
+    int checkIP();
 private:
-    int firstAddr[4];
-    int lastAddr[4];
+    int ip[8];
+    int error;
+    void check();
 };
 
 #endif /* IPADDRESS_H */
