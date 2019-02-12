@@ -27,31 +27,31 @@ Gui::~Gui() {
 GObject *Gui::gui_get_ui_element(const gchar * name)
 {
 
-    std::cout << "you ended up here a" << std::endl;
+    //std::cout << "you ended up here a" << std::endl;
     const gchar *s;
     GSList *list;
     int temp = 0;
 
     list = this->objects;
     do{
-        std::cout << "you ended up here c: " << std::to_string(temp) << std::endl;
-        std::cout << gtk_buildable_get_name((GtkBuildable *)list->data) << std::endl;
+        //std::cout << "you ended up here c: " << std::to_string(temp) << std::endl;
+        //std::cout << gtk_buildable_get_name((GtkBuildable *)list->data) << std::endl;
         s = gtk_buildable_get_name((GtkBuildable *)list->data);
-        std::cout << "you ended up here c: " << std::to_string(temp) << std::endl;
+        //std::cout << "you ended up here c: " << std::to_string(temp) << std::endl;
         ++temp;
         if (strcmp (s, name) == 0) {
             return (GObject *)list->data;
         }
 
     } while (list = g_slist_next(list));
-    std::cout << "you ended up here c" << std::endl;
+    //std::cout << "you ended up here c" << std::endl;
     return NULL;
 }   
     
 void Gui::gui_init()
 {
     GObject *window;
-    std::cout << this << std::endl;
+    //std::cout << this << std::endl;
     GError *err = NULL;
     
     this->definitions = gtk_builder_new ();
