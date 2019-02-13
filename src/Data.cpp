@@ -23,21 +23,6 @@ Data::~Data() {
     delete ip;
 }
 
-int Data::setIP(std::string firstIP, std::string lastIP){
-    this->ip = new IPAddress(firstIP, lastIP);
-}
-
-int* Data::getIP(){
-    return this->ip->getIP();
-}
-
-std::string Data::firstIP_toString(){
-    return this->ip->ipToString(0);
-}
-std::string Data::lastIP_toString(){
-    return this->ip->ipToString(1);
-}
-
-int Data::checkIP(){
-    this->ip->checkIP();
+void Data::setIPRange(std::string firstIP, std::string lastIP){
+    this->ip = new Network(firstIP, lastIP);
 }

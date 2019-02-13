@@ -2,16 +2,23 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="header" displayName="header" projectFiles="true">
+      <itemPath>header/Data.h</itemPath>
       <itemPath>header/Gui.h</itemPath>
       <itemPath>header/IPAddress.h</itemPath>
+      <itemPath>header/IPRange.h</itemPath>
+      <itemPath>header/Network.h</itemPath>
+      <itemPath>header/Ping.h</itemPath>
       <itemPath>header/callbacks.h</itemPath>
-      <itemPath>header/definitions.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="resources" projectFiles="true">
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>src/Data.cpp</itemPath>
       <itemPath>src/Gui.cpp</itemPath>
       <itemPath>src/IPAddress.cpp</itemPath>
+      <itemPath>src/IPRange.cpp</itemPath>
+      <itemPath>src/Network.cpp</itemPath>
+      <itemPath>src/Ping.cpp</itemPath>
       <itemPath>src/callbacks.cpp</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
@@ -27,8 +34,6 @@
       <itemPath>Makefile</itemPath>
       <itemPath>GUI/test_glade_002.glade</itemPath>
     </logicalFolder>
-    <itemPath>src/Data.cpp</itemPath>
-    <itemPath>header/Data.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
@@ -84,6 +89,7 @@
             <pElem>/usr/lib/pangomm-1.4/include</pElem>
             <pElem>/usr/lib/cairomm-1.0/include</pElem>
             <pElem>/usr/lib/dbus-1.0/include</pElem>
+            <pElem>/usr/include/c++</pElem>
           </incDir>
           <commandLine>-export-dynamic -g</commandLine>
         </ccTool>
@@ -102,15 +108,25 @@
       </item>
       <item path="header/IPAddress.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="header/callbacks.h" ex="false" tool="3" flavor2="0">
+      <item path="header/IPRange.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="header/definitions.h" ex="false" tool="3" flavor2="0">
+      <item path="header/Network.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="header/Ping.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="header/callbacks.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Data.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Gui.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/IPAddress.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/IPRange.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Ping.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/callbacks.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -143,15 +159,25 @@
       </item>
       <item path="header/IPAddress.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="header/callbacks.h" ex="false" tool="3" flavor2="0">
+      <item path="header/IPRange.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="header/definitions.h" ex="false" tool="3" flavor2="0">
+      <item path="header/Network.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="header/Ping.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="header/callbacks.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Data.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Gui.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/IPAddress.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/IPRange.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Ping.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/callbacks.cpp" ex="false" tool="1" flavor2="0">
       </item>

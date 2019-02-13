@@ -12,6 +12,7 @@
  */
 
 #include "../header/Gui.h"
+extern Gui* gui;
 
 Gui::Gui() {
     data = new Data();
@@ -26,32 +27,25 @@ Gui::~Gui() {
 
 GObject *Gui::gui_get_ui_element(const gchar * name)
 {
-
-    //std::cout << "you ended up here a" << std::endl;
     const gchar *s;
     GSList *list;
     int temp = 0;
 
     list = this->objects;
     do{
-        //std::cout << "you ended up here c: " << std::to_string(temp) << std::endl;
-        //std::cout << gtk_buildable_get_name((GtkBuildable *)list->data) << std::endl;
         s = gtk_buildable_get_name((GtkBuildable *)list->data);
-        //std::cout << "you ended up here c: " << std::to_string(temp) << std::endl;
         ++temp;
         if (strcmp (s, name) == 0) {
             return (GObject *)list->data;
         }
 
     } while (list = g_slist_next(list));
-    //std::cout << "you ended up here c" << std::endl;
     return NULL;
 }   
     
 void Gui::gui_init()
 {
     GObject *window;
-    //std::cout << this << std::endl;
     GError *err = NULL;
     
     this->definitions = gtk_builder_new ();
@@ -65,14 +59,10 @@ void Gui::gui_init()
     }
     
     gtk_builder_connect_signals(this->definitions, this);
-    std::cout << this << std::endl;
     
     this->objects = gtk_builder_get_objects(this->definitions);
+    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_startIP"), "192.168.1.1");
+    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_endIP"), "192.168.1.50");
     window = (GObject *) this->gui_get_ui_element("mywindow");
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-}
-
-
-int Gui::setIp(std::string firstAddr, std::string lastAddr){
-    this->data->setIP(firstAddr, lastAddr);
 }

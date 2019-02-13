@@ -7,29 +7,31 @@
 /* 
  * File:   IPAddress.h
  * Author: Florian Leuze
- * E-Mail: FlorianLeuze@aol.com
- * Universität Stuttgart
  *
- * Created on 8. Februar 2019, 18:44
+ * Created on 12. Februar 2019, 20:41
  */
 
 #ifndef IPADDRESS_H
 #define IPADDRESS_H
+
 #include <string>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 class IPAddress {
 public:
-    IPAddress(std::string first, std::string last);
+    IPAddress();
+    IPAddress(int* aIp);
+    IPAddress(std::string sIp);
     IPAddress(const IPAddress& orig);
     virtual ~IPAddress();
-    int* getIP();
-    std::string ipToString(int ip);
-    int checkIP();
+    std::string ipToString();
+    uint getOktet(uint okt); //1-4 from right to leaft
+    void setOktet(uint okt, uint value); 
 private:
-    int ip[8];
+    int *ip;
     int error;
-    void check();
 };
 
 #endif /* IPADDRESS_H */

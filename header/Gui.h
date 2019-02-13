@@ -33,7 +33,6 @@ public:
     virtual ~Gui();
     void gui_init();
     GObject *gui_get_ui_element(const gchar *name);
-    int setIp(std::string firstAddr, std::string lastAddr);
 private:
 };
 

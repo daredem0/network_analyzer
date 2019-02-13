@@ -13,20 +13,15 @@
 
 #ifndef DATA_H
 #define DATA_H
-#include "../header/IPAddress.h"
+#include "../header/Network.h"
 
 class Data {
 public:
+    Network *ip;
     Data();
     Data(const Data& orig);
     virtual ~Data();
-    int setIP(std::string firstIP, std::string lastIP);
-    int *getIP();
-    std::string firstIP_toString();
-    std::string lastIP_toString();
-    int checkIP();
-private:
-    IPAddress *ip;
+    void setIPRange(std::string firstIP, std::string lastIP);
 };
 
 #endif /* DATA_H */
