@@ -12,7 +12,7 @@
  */
 
 #include "../header/Gui.h"
-extern Gui* gui;
+//extern Gui* gui;
 
 Gui::Gui() {
     data = new Data();
@@ -47,6 +47,18 @@ void Gui::gui_init()
 {
     GObject *window;
     GError *err = NULL;
+    mutex m;
+    m.lock();
+    outputStream = new OutputStream();
+    m.unlock();
+    if(!g_thread_supported()){
+        //g_thread_init(NULL);
+        //gdk_threads_init();
+        cout << "g_thread supported" << endl;
+    }
+    else{
+        cout << "g_thread unsupported" << endl;
+    }
     
     this->definitions = gtk_builder_new ();
     
@@ -62,7 +74,7 @@ void Gui::gui_init()
     
     this->objects = gtk_builder_get_objects(this->definitions);
     gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_startIP"), "192.168.1.1");
-    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_endIP"), "192.168.1.50");
+    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_endIP"), "192.168.1.3");
     window = (GObject *) this->gui_get_ui_element("mywindow");
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 }

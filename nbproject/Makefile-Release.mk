@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/IPAddress.o \
 	${OBJECTDIR}/src/IPRange.o \
 	${OBJECTDIR}/src/Network.o \
+	${OBJECTDIR}/src/OutputStream.o \
 	${OBJECTDIR}/src/Ping.o \
 	${OBJECTDIR}/src/callbacks.o \
 	${OBJECTDIR}/src/main.o
@@ -93,6 +94,11 @@ ${OBJECTDIR}/src/Network.o: src/Network.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network.o src/Network.cpp
+
+${OBJECTDIR}/src/OutputStream.o: src/OutputStream.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/OutputStream.o src/OutputStream.cpp
 
 ${OBJECTDIR}/src/Ping.o: src/Ping.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

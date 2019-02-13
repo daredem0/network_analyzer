@@ -22,6 +22,7 @@ public:
     Data(const Data& orig);
     virtual ~Data();
     void setIPRange(std::string firstIP, std::string lastIP);
+private:
 };
 
 #endif /* DATA_H */

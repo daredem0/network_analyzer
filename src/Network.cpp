@@ -17,13 +17,22 @@
 
 using namespace std;
 
-Network::Network(std::string first, std::string last) {
+Network::Network(){
+    thPing = NULL;
+    outputStream = new OutputStream();
+}
+
+Network::Network(std::string first, std::string last){
+    thPing = NULL;
     error = 0;
+    outputStream = new OutputStream();
     range = new IPRange();
+    ostringstream buffer;
     for(int j = 0; j < 8; ++j){
         *(range->getIp()+j) = 0;
     }
-    std::cout << "initialized decryption of ip addresses" << std::endl;
+    buffer << "initialized decryption of ip addresses" << std::endl;
+    outputStream->writeOutput(buffer.str());
     std::string temp, temp2;
     int i = 0;
     for(std::string::iterator it = first.begin(); it != first.end(); ++it){
@@ -58,15 +67,18 @@ Network::Network(std::string first, std::string last) {
     temp = "";
     check();
     if(error == 0)
-        cout << "decryption done. Seems all went fine" << endl;
+        outputStream->writeOutput("decryption done. Seems all went fine" + OutputStream::endl);
     else
-        cout << "something seems off. You might want to check your address" << endl;
+        outputStream->writeOutput("something seems off. You might want to check your address" + OutputStream::endl);
 }
 
 Network::Network(const Network& orig) {
 }
 
 Network::~Network() {
+    delete thPing;
+    delete range;
+    delete outputStream;
 }
 
 int* Network::getIP(){
@@ -104,14 +116,17 @@ std::string Network::ipToString(int ip){
 
 int Network::checkIP(){
     switch(error){
+        case -3:
+            outputStream->writeOutput("Some octet is higher than 255. Please insert an IP in the appropriate range (0 <= octet <= 255)." + OutputStream::endl);
+            break;
         case -2:
-            cout << "First address is higher than last address. That doesn't make sense." << endl;
+            outputStream->writeOutput("First address is higher than last address. That doesn't make sense." + OutputStream::endl);
             break;
         case -1:
-            cout << "Last octet seems to be zero in either first or last address. Are you sure you want that=" << endl;
+            outputStream->writeOutput("Last octet seems to be zero in either first or last address. Are you sure you want that?" + OutputStream::endl);
             break;
         case 0:
-            cout << "No complaints" << endl;
+            outputStream->writeOutput("No complaints" + OutputStream::endl);
             break;
     }
     return error;
@@ -137,11 +152,116 @@ void Network::check(){
             }
         }
     }
+    
+    //check if some octet has a value > 255
+    for(int i = 0; i < 8; ++i){
+        if(*(range->getIp()+i) > 255)
+            error = -3;
+    }
  }
 
-int Network::pingAll(){
-    range->generateList();
+void Network::reserveList(size_t n){
+    pingResults.reserve(n);
 }
+
+void Network::pingWorker(void *data, void *list){
+    std::mutex m;
+    OutputStream *stream = new OutputStream();
+    outputStream->writeOutput("In ping worker" + OutputStream::endl);
+    ((IPRange*)data)->generateList();
+    ((std::vector<Ping>*)list)->reserve(((IPRange*)data)->getSize());
+    int i = 0;
+    if(((IPRange*)data)->getDone()){
+        for(std::vector<IPAddress>::iterator it = ((IPRange*)data)->getFirst(); it < ((IPRange*)data)->getEnd(); ++it){
+            cout << "Run: " << i << endl;
+            cout << "Length: " << ((IPRange*)data)->getSize() << endl;
+            ++i;
+            cout << "IP: " << (*it).ipToString() << endl;
+            ping((*it).ipToString());
+        }
+    }
+    delete stream;
+}
+
+int Network::pingAll(){
+    outputStream->writeOutput("Ping initialized" + OutputStream::endl);
+    pingResults.clear();
+    thPing = new std::thread(&Network::pingWorker, this, (void *)range, (void *)&pingResults);
+    std::ostringstream buffer;
+    OutputStream stream;
+    stream.writeOutput(buffer.str());
+    thPing->detach();
+    //delete thPing;
+    return 0;
+}
+
+int Network::ping(std::string ip){
+    OutputStream stream;
+    //stream.writeOutput("ping initialized" + OutputStream::endl);
+    cout << "ping initialized" << endl;
+    cout << ip << endl;
+    //ostringstream buffer;
+    FILE *tstream;
+    std::string command = "ping -c " + to_string(trials) + " -w " + to_string(time) + " " + ip;
+    cout << "generated command: " << command << endl;
+    //outputStream->writeOutput(buffer.str());
+    tstream = popen(command.c_str(), "r");
+    int temp = 0;
+    std::vector<std::string> message;
+    while (!feof(tstream)) 
+    { 
+        char buf[ 1024 ] = {0}; 
+
+        if ( fgets(buf, sizeof(buf), tstream) > 0 ) 
+        { 
+            cout << "Line " << temp << " " << std::string(buf);
+            //outputStream->writeOutput(buffer.str());
+            message.push_back(std::string(buf));
+            ++ temp;
+        } 
+    } 
+    //stream.writeOutput(buffer.str());
+    //std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    Ping *ping = new Ping(message, &stream);
+    pingResults.push_back(*ping);
+    //cout << ping->getIP()->ipToString() << endl;
+    //cout << pingResults.back().getIP()->ipToString() << endl;
+    delete ping;
+    //stream.writeOutput(buffer.str());
+    pclose( tstream ); 
+}
+
+/*int Network::ping(){
+    outputStream->writeOutput("ping initialized" + OutputStream::endl);
+    ostringstream buffer;
+    FILE *tstream;
+    std::string command = "ping -c " + to_string(trials) + " -w " + to_string(time) + " " + ipToString(0);
+    buffer << "generated command: " << command << endl;
+    outputStream->writeOutput(buffer.str());
+    tstream = popen(command.c_str(), "r");
+    int temp = 0;
+    std::vector<std::string> message;
+    while (!feof(tstream)) 
+    { 
+        char buf[ 1024 ] = {0}; 
+
+        if ( fgets(buf, sizeof(buf), tstream) > 0 ) 
+        { 
+            buffer << "Line " << temp << " " << std::string(buf);
+            outputStream->writeOutput(buffer.str());
+            message.push_back(std::string(buf));
+            ++ temp;
+        } 
+    } 
+    Ping *ping = new Ping(message, outputStream);
+    cout << "before push results" << endl;
+    pingResults.push_back(*ping);
+    cout << "after" << endl;
+    delete ping;
+    cout << "after delete" << endl;
+    pclose( tstream ); 
+    cout << "after close" << endl;
+}*/
 
 int Network::ping(){
     std::cout << "ping initialized" << endl;
@@ -163,15 +283,61 @@ int Network::ping(){
         } 
     } 
     Ping *ping = new Ping(message);
-    pingResults.push_back(*ping);
+    //pingResults.push_back(*ping);
     delete ping;
     pclose( tstream ); 
 }
-
+    
 void Network::printPing(){
-   //for(std::vector<std::string>::iterator it = fullPingResults.begin(); it != fullPingResults.end(); ++it) {
-    //std::cout << *it << std::endl;
-   //}
+   for(std::vector<Ping>::iterator it = pingResults.begin(); it != pingResults.end(); ++it) {
+       it->printPing();
+   }
+}
+
+void Network::pingShortRes(){
+    if(pingResults.empty()){
+        return;
+        cout << "list empty" << endl;
+    }
+    else{
+        //cout << "list not empty" << endl;
+        for(std::vector<Ping>::iterator it = pingResults.begin(); it < pingResults.end(); ++it) {
+            //cout << "were here" << endl;
+            //out << pingResults.front().getIP()->ipToString() << endl;
+            //cout << (*it).getIP()->ipToString() << endl;
+            (*it).printShort();
+        }
+    }
+}
+
+void Network::threadKill(){
+    try{
+        if(threadActive()){
+            ostringstream buffer;
+            range->errorSignal();
+            range->reset();
+            delete thPing;
+            thPing = NULL;
+        }
+    }
+    catch(...){
+        outputStream->writeOutput("Thread not deletable" + OutputStream::endl);
+    }
+}
+
+void Network::threadActiveWorker(void *data, void *ptr){
+    if((std::thread *)ptr != NULL)
+        *((bool *)data) = true;
+    else 
+        *((bool *)data) = false;
+}
+
+bool Network::threadActive(){
+    bool temp;
+    org = new std::thread(&Network::threadActiveWorker, this, (void *)&temp, (void *)thPing);
+    org->join();
+    delete org;
+    return temp;
 }
 
 std::string Network::firstIP_toString(){
@@ -180,3 +346,4 @@ std::string Network::firstIP_toString(){
 std::string Network::lastIP_toString(){
     return ipToString(1);
 }
+

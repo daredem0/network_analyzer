@@ -23,6 +23,20 @@
             <property name="position">0</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="btnMenu_printRes">
+            <property name="label" translatable="yes">Print Res</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="btnMenu_printRes_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>

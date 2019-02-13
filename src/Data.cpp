@@ -13,7 +13,7 @@
 
 #include "../header/Data.h"
 
-Data::Data() {
+Data::Data(){
 }
 
 Data::Data(const Data& orig) {

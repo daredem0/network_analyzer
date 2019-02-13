@@ -7,6 +7,7 @@
       <itemPath>header/IPAddress.h</itemPath>
       <itemPath>header/IPRange.h</itemPath>
       <itemPath>header/Network.h</itemPath>
+      <itemPath>header/OutputStream.h</itemPath>
       <itemPath>header/Ping.h</itemPath>
       <itemPath>header/callbacks.h</itemPath>
     </logicalFolder>
@@ -18,6 +19,7 @@
       <itemPath>src/IPAddress.cpp</itemPath>
       <itemPath>src/IPRange.cpp</itemPath>
       <itemPath>src/Network.cpp</itemPath>
+      <itemPath>src/OutputStream.cpp</itemPath>
       <itemPath>src/Ping.cpp</itemPath>
       <itemPath>src/callbacks.cpp</itemPath>
       <itemPath>src/main.cpp</itemPath>
@@ -91,7 +93,7 @@
             <pElem>/usr/lib/dbus-1.0/include</pElem>
             <pElem>/usr/include/c++</pElem>
           </incDir>
-          <commandLine>-export-dynamic -g</commandLine>
+          <commandLine>-export-dynamic -pthread -g</commandLine>
         </ccTool>
         <linkerTool>
           <stripSymbols>true</stripSymbols>
@@ -112,6 +114,8 @@
       </item>
       <item path="header/Network.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="header/OutputStream.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="header/Ping.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="header/callbacks.h" ex="false" tool="3" flavor2="0">
@@ -125,6 +129,8 @@
       <item path="src/IPRange.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/OutputStream.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Ping.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -163,6 +169,8 @@
       </item>
       <item path="header/Network.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="header/OutputStream.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="header/Ping.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="header/callbacks.h" ex="false" tool="3" flavor2="0">
@@ -176,6 +184,8 @@
       <item path="src/IPRange.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/OutputStream.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Ping.cpp" ex="false" tool="1" flavor2="0">
       </item>

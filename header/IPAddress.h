@@ -18,6 +18,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <thread>
+#include "../header/OutputStream.h"
 
 class IPAddress {
 public:

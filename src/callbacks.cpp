@@ -41,11 +41,21 @@ extern "C" void btnInfo_clicked(GtkButton *button, Gui *gui){
 }
 
 extern "C" void btnStart_clicked(GtkButton *button, Gui *gui){
-    gui->data->ip->ping();
+    //gui->data->ip->ping();
     //gui->data->printPing();
+    if(gui->data->ip->threadActive()){
+        gui->data->ip->threadKill();
+    }
+    else{
+        gui->data->ip->pingAll();
+    }
 }
 
 extern "C" void btnReset_clicked(GtkButton *button, Gui *gui){
-    gui->data->ip->pingAll();
+    gui->data->ip->ping();
+    //while(true);
 }
-extern "C" void btnDraw_clicked(GtkButton *button, Gui *gui);
+
+extern "C" void btnMenu_printRes_clicked(GtkButton *button, Gui *gui){
+    gui->data->ip->pingShortRes();
+}

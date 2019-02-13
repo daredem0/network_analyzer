@@ -13,6 +13,8 @@
 
 #ifndef IPRANGE_H
 #define IPRANGE_H
+#include <chrono>
+#include <thread>
 #include "../header/IPAddress.h"
 
 using namespace std;
@@ -24,7 +26,16 @@ public:
     virtual ~IPRange();
     int* getIp();
     void generateList();
+    void errorSignal();
+    bool getDeletable();
+    bool getDone();
+    std::vector<IPAddress>::iterator getEnd();
+    std::vector<IPAddress>::iterator getFirst();
+    size_t getSize();
+    IPAddress *getIP(size_t n);
+    void reset();
 private:
+    bool error, deletable, done;
     int ip[8];
     IPAddress *first;
     IPAddress *last;

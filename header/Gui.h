@@ -20,6 +20,7 @@
 #include <iostream>
 #include <string>
 #include "../header/Data.h"
+#include "../header/OutputStream.h"
 
 #define UI_DEFINITIONS_FILE "./GUI/test_glade_002.glade"
 
@@ -33,7 +34,10 @@ public:
     virtual ~Gui();
     void gui_init();
     GObject *gui_get_ui_element(const gchar *name);
+    OutputStream *getOutput();
 private:
+    void outputWorker(void* data);
+    OutputStream *outputStream;
 };
 
 #endif /* GUI_H */
