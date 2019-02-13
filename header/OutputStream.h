@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   OutputStream.h
- * Author: Florian Leuze
- *
- * Created on 13. Februar 2019, 16:10
+/**
+ * @file OutputStream.h
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 13.02.2019
+ * @brief Defined socket to access the ostream; threadsafe
  */
 
 #ifndef OUTPUTSTREAM_H

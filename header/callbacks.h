@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   callbacks.h
- * Author: Florian Leuze
- *
- * Created on 9. Februar 2019, 16:54
+/**
+ * @file callbacks.h
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 09.02.2019
+ * @brief header file to store declarations of all callback functions
  */
 
 #ifndef CALLBACKS_H

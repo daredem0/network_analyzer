@@ -1,13 +1,9 @@
-/* 
- * File:   main.cpp
- * Author: Florian Leuze
- * E-Mail: FlorianLeuze@aol.com
- * Universität Stuttgart
- *
- * Created on 5. Februar 2019, 10:19
+/**
+ * @file main.cpp
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 05.02.2019
+ * @brief Main Function network analyzer. Mainly ochestrates the init and gui creation
  */
-
-
 #include "../header/Gui.h"
 #include "../header/callbacks.h"
 

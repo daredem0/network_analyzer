@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   IPRange.h
- * Author: Florian Leuze
- *
- * Created on 12. Februar 2019, 20:43
+/**
+ * @file IPRange.h
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 12.02.2019
+ * @brief Class to store an ip range, a list containing all ips withing the range and offerinc sockets to access those
  */
 
 #ifndef IPRANGE_H
