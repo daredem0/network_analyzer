@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   IPAddress.cpp
- * Author: Florian Leuze
- * 
- * Created on 12. Februar 2019, 20:41
+/**
+ * @file IPAddress.cpp
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 12.02.2019
+ * @brief IPAddress Class cpp file
  */
 
 #include "../header/IPAddress.h"
@@ -27,7 +21,6 @@ IPAddress::IPAddress(int* aIp){
 }
 
 IPAddress::IPAddress(std::string sIp) {
-    //std::cout << "entered construcor" << std::endl;
     try{
        error = 0;
        ip = new int[4];
@@ -39,7 +32,6 @@ IPAddress::IPAddress(std::string sIp) {
         std::string temp, temp2;
         int i = 0;
         for(std::string::iterator it = sIp.begin(); it != sIp.end(); ++it){
-            //std::cout << "made it to the loop" << std::endl;
             temp2 = *it; //store the value wher iterator points in a temporary string. No idea why C++ wont accept the comparison of *it with "."
             if (temp2 != "."){ 
                 temp += *it; 

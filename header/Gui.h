@@ -2,7 +2,7 @@
  * @file Gui.h
  * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
  * @date 09.02.2019
- * @brief Class that organises gui, workers and signal handlers
+ * @brief Gui class header
  */
 
 
@@ -16,22 +16,46 @@
 #include "../header/Data.h"
 #include "../header/OutputStream.h"
 
-#define UI_DEFINITIONS_FILE "./GUI/test_glade_002.glade"
+#define UI_DEFINITIONS_FILE "./GUI/test_glade_002.glade" /**< Defines the path to the gui-xml file. For convenience and tidiness.*/
 
+/**
+ *@brief The Gui class handles most of the initialization of the program. it loads all gui objects and stores them. 
+ * Furthermore it implements the methods needed to access each ui element and organises workers and handlers.
+ */
 class Gui {
 public:
-    GtkBuilder *definitions;
-    GSList *objects;
-    Data *data;
+    //CONSTRUCTORS/DECONSTRUCTORS/************************************************************/
+    /**
+    * @brief Standard constructor. Also builds a new data object
+    */
     Gui();
+    /**
+    * @brief Standard copy constructor. __Copy for data object still needs to be implemented__
+    */
     Gui(const Gui& orig);
+    /**
+    * @brief Standard deconstructor. Deletes data object. 
+    */
     virtual ~Gui();
+    /**
+    * @brief Initializes the gui. outputStream will be built, gtk_builder is called and loaded, signals are connected. Just rudimentary error handlign implemented.
+    */
     void gui_init();
+    /**
+    * @brief method that will return the GObject corresponding to the gchar in parameter list
+    * @param const gchar *name - name of the ui element that shall be returned
+    */
     GObject *gui_get_ui_element(const gchar *name);
-    OutputStream *getOutput();
+    /**
+    * @brief Initializes the gui. outputStream will be built, gtk_builder is called and loaded, signals are connected. Just rudimentary error handlign implemented.
+    */
+    static const std::string first; /**< Constant definition for first ip address that is preset. Defined in Gui.cpp*/
+    static const std::string last;/**< Constant definition for last ip addresss that is preset. Defined in Gui.cpp*/
+    Data *data; /**< Data container. Outdaded and should be exchanged through a Network type object soon*/
+    GtkBuilder *definitions; /**< Contains the GtkBuilder which loads the gui from the xml file*/
+    GSList *objects; /**< Contains all objects that were loaded through the GtkBuilder*/
 private:
-    void outputWorker(void* data);
-    OutputStream *outputStream;
+    OutputStream *outputStream; /**< outputstream object to make cout thread safe __still somewhat buggy__*/
 };
 
 #endif /* GUI_H */

@@ -52,6 +52,7 @@
       <compileType>
         <ccTool>
           <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
           <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>/usr/include/gtkmm-3.0</pElem>

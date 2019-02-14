@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Data.cpp
- * Author: Florian Leuze
- * 
- * Created on 11. Februar 2019, 23:49
+/**
+ * @file Data.cpp
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 11.02.2019
+ * @brief Data class cpp file
  */
 
 #include "../header/Data.h"

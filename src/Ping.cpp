@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Ping.cpp
- * Author: Florian Leuze
- * 
- * Created on 12. Februar 2019, 20:30
+/**
+ * @file Ping.cpp
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 12.02.2019
+ * @brief Ping Class cpp
  */
 
 #include "../header/Ping.h"
+#include <vector>
 
 Ping::Ping(std::vector<std::string> message, OutputStream *o):fullMessage(message),outputStream(o){
     initPing();
@@ -39,7 +34,7 @@ Ping::Ping(const Ping& orig) {
 Ping::~Ping() {
     delete ip;
     fullMessage.clear();
-    //delete outputStream;
+    delete outputStream;
 }
 
 void Ping::setIP(std::string sIp){
@@ -112,7 +107,6 @@ std::string Ping::findIP(std::string s){
     s.erase(0, i+4);
     i = s.find_first_of(" ");
     s.erase(i, s.length());
-    cout << "You made it through: " << s << endl;
     return s;
 }
 

@@ -19,10 +19,40 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+/**
+ * @brief Handler for btnSetIP
+ * @param GtkButton *button - Button that generated the signal
+ * @param Gui *gui - Pointer to gui object
+ */
 extern "C" void btnSetIP_clicked(GtkButton *button, Gui *gui);
+/**
+ * @brief Handler for btnSetIP
+ * @param GtkButton *button - Button that generated the signal
+ * @param Gui *gui - Pointer to gui object
+ */
 extern "C" void btnInfo_clicked(GtkButton *button, Gui *gui);
+/**
+ * @brief Handler for btnInfo
+ * @param GtkButton *button - Button that generated the signal
+ * @param Gui *gui - Pointer to gui object
+ */
 extern "C" void btnStart_clicked(GtkButton *button, Gui *gui);
+/**
+ * @brief Handler for btnStart
+ * @param GtkButton *button - Button that generated the signal
+ * @param Gui *gui - Pointer to gui object
+ */
 extern "C" void btnReset_clicked(GtkButton *button, Gui *gui);
+/**
+ * @brief Handler for btnReset
+ * @param GtkButton *button - Button that generated the signal
+ * @param Gui *gui - Pointer to gui object
+ */
 extern "C" void btnDraw_clicked(GtkButton *button, Gui *gui);
+/**
+ * @brief Handler for btnDraw
+ * @param GtkButton *button - Button that generated the signal
+ * @param Gui *gui - Pointer to gui object
+ */
 #endif /* CALLBACKS_H */
 

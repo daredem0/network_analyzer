@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   IPAddress.cpp
- * Author: Florian Leuze
- * E-Mail: FlorianLeuze@aol.com
- * Universität Stuttgart
- *
- * Created on 8. Februar 2019, 18:44
+/**
+ * @file Network.cpp
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 08.02.2019
+ * @brief Network Class cpp
  */
 
 #include "../header/Network.h"
@@ -170,13 +162,13 @@ void Network::pingWorker(void *data, void *list){
     outputStream->writeOutput("In ping worker" + OutputStream::endl);
     ((IPRange*)data)->generateList();
     ((std::vector<Ping>*)list)->reserve(((IPRange*)data)->getSize());
-    int i = 0;
+    //int i = 0;
     if(((IPRange*)data)->getDone()){
         for(std::vector<IPAddress>::iterator it = ((IPRange*)data)->getFirst(); it < ((IPRange*)data)->getEnd(); ++it){
-            cout << "Run: " << i << endl;
-            cout << "Length: " << ((IPRange*)data)->getSize() << endl;
-            ++i;
-            cout << "IP: " << (*it).ipToString() << endl;
+            //cout << "Run: " << i << endl;
+            //cout << "Length: " << ((IPRange*)data)->getSize() << endl;
+            //++i;
+            //cout << "IP: " << (*it).ipToString() << endl;
             ping((*it).ipToString());
         }
     }
@@ -191,20 +183,17 @@ int Network::pingAll(){
     OutputStream stream;
     stream.writeOutput(buffer.str());
     thPing->detach();
-    //delete thPing;
+    delete thPing;
     return 0;
 }
 
 int Network::ping(std::string ip){
     OutputStream stream;
-    //stream.writeOutput("ping initialized" + OutputStream::endl);
     cout << "ping initialized" << endl;
     cout << ip << endl;
-    //ostringstream buffer;
     FILE *tstream;
     std::string command = "ping -c " + to_string(trials) + " -w " + to_string(time) + " " + ip;
     cout << "generated command: " << command << endl;
-    //outputStream->writeOutput(buffer.str());
     tstream = popen(command.c_str(), "r");
     int temp = 0;
     std::vector<std::string> message;
@@ -215,19 +204,13 @@ int Network::ping(std::string ip){
         if ( fgets(buf, sizeof(buf), tstream) > 0 ) 
         { 
             cout << "Line " << temp << " " << std::string(buf);
-            //outputStream->writeOutput(buffer.str());
             message.push_back(std::string(buf));
             ++ temp;
         } 
     } 
-    //stream.writeOutput(buffer.str());
-    //std::this_thread::sleep_for(std::chrono::milliseconds(50));
     Ping *ping = new Ping(message, &stream);
     pingResults.push_back(*ping);
-    //cout << ping->getIP()->ipToString() << endl;
-    //cout << pingResults.back().getIP()->ipToString() << endl;
     delete ping;
-    //stream.writeOutput(buffer.str());
     pclose( tstream ); 
 }
 
@@ -283,7 +266,7 @@ int Network::ping(){
         } 
     } 
     Ping *ping = new Ping(message);
-    //pingResults.push_back(*ping);
+    pingResults.push_back(*ping);
     delete ping;
     pclose( tstream ); 
 }
@@ -300,11 +283,7 @@ void Network::pingShortRes(){
         cout << "list empty" << endl;
     }
     else{
-        //cout << "list not empty" << endl;
         for(std::vector<Ping>::iterator it = pingResults.begin(); it < pingResults.end(); ++it) {
-            //cout << "were here" << endl;
-            //out << pingResults.front().getIP()->ipToString() << endl;
-            //cout << (*it).getIP()->ipToString() << endl;
             (*it).printShort();
         }
     }

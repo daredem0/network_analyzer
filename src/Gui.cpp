@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   gui.cpp
- * Author: Florian Leuze
- * 
- * Created on 9. Februar 2019, 16:43
+/**
+ * @file Gui.cpp.
+ * @author Florian Leuze (3308288) <st155013@stud.uni-stuttgart.de>
+ * @date 09.02.2019
+ * @brief Gui class cpp file
  */
 
 #include "../header/Gui.h"
-//extern Gui* gui;
+
+const std::string Gui::first = "192.168.1.1";
+const std::string Gui::last = "192.168.1.50";
 
 Gui::Gui() {
     data = new Data();
@@ -73,8 +69,8 @@ void Gui::gui_init()
     gtk_builder_connect_signals(this->definitions, this);
     
     this->objects = gtk_builder_get_objects(this->definitions);
-    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_startIP"), "192.168.1.1");
-    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_endIP"), "192.168.1.3");
+    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_startIP"), Gui::first.c_str());
+    gtk_entry_set_text((GtkEntry *)this->gui_get_ui_element("entr_endIP"), Gui::last.c_str());
     window = (GObject *) this->gui_get_ui_element("mywindow");
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 }
