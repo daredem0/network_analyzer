@@ -17,7 +17,7 @@
 #include "../header/OutputStream.h"
 
 #define UI_DEFINITIONS_FILE "./GUI/test_glade_002.glade" /**< Defines the path to the gui-xml file. For convenience and tidiness.*/
-
+#define UI_DEFINITIONS_FILE_BACKUP "../../../GUI/test_glade_002.glade"
 /**
  *@brief The Gui class handles most of the initialization of the program. it loads all gui objects and stores them. 
  * Furthermore it implements the methods needed to access each ui element and organises workers and handlers.

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=na_001
+PROJECTNAME=network-analyzer
 
 # Active Configuration
 DEFAULTCONF=Debug

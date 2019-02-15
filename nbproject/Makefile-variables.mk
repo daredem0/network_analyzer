@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=na_001
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/na_001
+CND_ARTIFACT_NAME_Debug=network-analyzer
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/network-analyzer
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=na001.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/na001.tar
+CND_PACKAGE_NAME_Debug=network-analyzer.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/network-analyzer.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=na_001
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/na_001
+CND_ARTIFACT_NAME_Release=network-analyzer
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/network-analyzer
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=na001.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/na001.tar
+CND_PACKAGE_NAME_Release=network-analyzer.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/network-analyzer.tar
 #
 # include compiler specific variables
 #

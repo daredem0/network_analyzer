@@ -46,9 +46,11 @@ extern "C" void btnStart_clicked(GtkButton *button, Gui *gui){
     //gui->data->ip->ping();
     //gui->data->printPing();
     if(gui->data->ip->threadActive()){
+        cout << "active" << endl;
         gui->data->ip->threadKill();
     }
     else{
+        cout << "inactive" << endl;
         gui->data->ip->pingAll();
     }
 }

@@ -34,7 +34,7 @@ Ping::Ping(const Ping& orig) {
 Ping::~Ping() {
     delete ip;
     fullMessage.clear();
-    delete outputStream;
+    //delete outputStream;
 }
 
 void Ping::setIP(std::string sIp){

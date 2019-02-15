@@ -58,12 +58,16 @@ void Gui::gui_init()
     
     this->definitions = gtk_builder_new ();
     
-    gtk_builder_add_from_file(this->definitions, UI_DEFINITIONS_FILE, &err);
-    
+    gtk_builder_add_from_file(this->definitions, UI_DEFINITIONS_FILE_BACKUP, &err);
     if (err != NULL) {
         g_printerr("Error while loading app definitions file: %s\n", err->message);
         g_error_free (err);
-        gtk_main_quit ();
+        GError *err = NULL;
+        gtk_builder_add_from_file(this->definitions, UI_DEFINITIONS_FILE, &err);
+        if (err != NULL) {
+            g_error_free(err);
+            gtk_main_quit ();
+        }
     }
     
     gtk_builder_connect_signals(this->definitions, this);
