@@ -201,7 +201,7 @@ int Network::ping(std::string ip){
     { 
         char buf[ 1024 ] = {0}; 
 
-        if ( fgets(buf, sizeof(buf), tstream) > 0 ) 
+        if ( fgets(buf, sizeof(buf), tstream) != NULL ) 
         { 
             cout << "Line " << temp << " " << std::string(buf);
             message.push_back(std::string(buf));
@@ -258,7 +258,7 @@ int Network::ping(){
     { 
         char buf[ 1024 ] = {0}; 
 
-        if ( fgets(buf, sizeof(buf), tstream) > 0 ) 
+        if ( fgets(buf, sizeof(buf), tstream) != NULL ) 
         { 
             cout << "Line " << temp << " " << std::string(buf);
             message.push_back(std::string(buf));

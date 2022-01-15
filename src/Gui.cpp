@@ -47,14 +47,14 @@ void Gui::gui_init()
     m.lock();
     outputStream = new OutputStream();
     m.unlock();
-    if(!g_thread_supported()){
+    /*if(!g_thread_supported()){
         //g_thread_init(NULL);
         //gdk_threads_init();
         cout << "g_thread supported" << endl;
     }
     else{
         cout << "g_thread unsupported" << endl;
-    }
+    }*/
     
     this->definitions = gtk_builder_new ();
     
